@@ -8,6 +8,7 @@ import xss from 'xss-clean';
 import connectDB from './config/db.js';
 import { rateLimiter } from './middlewares/rateLimiter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import swaggerDocs from './config/swagger.js';
 
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -49,5 +50,8 @@ app.use('/api/shipping', shippingRoutes);
 
 // Middleware de manejo de errores
 app.use(errorHandler);
+
+// Documentación Swagger
+swaggerDocs(app);
 
 export default app;

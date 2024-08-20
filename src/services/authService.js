@@ -10,7 +10,10 @@ export const registerUser = async (userData) => {
     throw new Error('User already exists');
   }
 
+  // Generar un salt con 10 rondas de procesamiento
   const salt = await bcrypt.genSalt(10);
+
+   // Hashear la contraseña con el salt
   const hashedPassword = await bcrypt.hash(password, salt);
 
   const user = new User({
